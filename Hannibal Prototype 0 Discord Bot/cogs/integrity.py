@@ -32,7 +32,7 @@ class Integrity(commands.Cog):
 
     @kick.error
     async def kick_error(self, ctx, error):
-        if isinstance(error, MissingPermissions):
+        if isinstance(error, commands.MissingPermissions):
             await ctx.send("Ma3andekch Permission bch t3mel Kick lmember e5er !!")
 
     # Ban a member
@@ -44,7 +44,7 @@ class Integrity(commands.Cog):
 
     @ban.error
     async def ban_error(self, ctx, error):
-        if isinstance(error, MissingPermissions):
+        if isinstance(error, commands.MissingPermissions):
             await ctx.send("Ma3andekch Permission bch t3mel ban lmember e5er !!")
 
     # UnBan a member
@@ -64,7 +64,7 @@ class Integrity(commands.Cog):
 
     @unban.error
     async def unban_error(self, ctx, error):
-        if isinstance(error, MissingPermissions):
+        if isinstance(error, commands.MissingPermissions):
             await ctx.send("Ma3andekch permission bch tna7i ban!")
 
     # Add Role
@@ -79,7 +79,7 @@ class Integrity(commands.Cog):
             
     @add_role.error
     async def role_error(self, ctx, error):
-        if isinstance(error, MissingPermissions):
+        if isinstance(error, commands.MissingPermissions):
             await ctx.send("ma3andekch Permission")
             
     # Remove Role
@@ -94,8 +94,16 @@ class Integrity(commands.Cog):
             
     @remove_role.error
     async def role_error(self, ctx, error):
-        if isinstance(error, MissingPermissions):
+        if isinstance(error, commands.MissingPermissions):
             await ctx.send("ma3andekch Permission")
+    #clear command
+    @commands.command()
+    @commands.has_permissions(manage_messages = True)
+    async def clear(self,ctx, num_messages: int):
+    # Purge (delete) messages
+        await ctx.channel.purge(limit=num_messages + 1)  # +1 to include the command message
+        await ctx.send(f"Cleared {num_messages} messages from this channel.")
 
 def setup(bot):
     bot.add_cog(Integrity(bot))
+
