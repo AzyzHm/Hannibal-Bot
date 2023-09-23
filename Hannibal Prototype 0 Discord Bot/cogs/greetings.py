@@ -28,12 +28,7 @@ class greetings(commands.Cog):
         if channel:
             await channel.send(f"{member.mention} 5raj min server")
             
-    @commands.command()
-    @commands.has_permissions(manage_messages = True)
-    async def clear(self,ctx, num_messages: int):
-    # Purge (delete) messages
-        await ctx.channel.pu0rge(limit=num_messages + 1)  # +1 to include the command message
-        await ctx.send(f"Cleared {num_messages} messages from this channel.")
 
 def setup(bot):
     bot.add_cog(greetings(bot))
+
