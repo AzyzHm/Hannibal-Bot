@@ -19,6 +19,17 @@ class Integrity(commands.Cog):
                 await message.delete()
                 await message.channel.send("Ay kelma zeyda tnajem tetbana 3leha!")
                 return  # Stop processing the message further if it contains an offensive word
+        if (("mechi nofter" in message.content) or ("kont nofter" in message.content)):
+            await message.channel.send("sa7a w bechfee")
+        if(("gg" in message.content) or ("GG" in message.content) or ("gj" in message.content)):
+            await message.channel.send("GG Guys")
+        if (("Hannibal" in message.content) or  ("hannibal" in message.content) or  ("HANNIBAL" in message.content)):
+            await message.channel.send("Kenek 7ajtek beya w ma3raftech lcommands type `-help_commands`")
+        if (("shinhi" in message.content) or ("SHINHI" in message.content)):
+            await message.channel.send("shinhi li shinhi?")
+        if (("barra mrigl" in message.content) or ("BARRA MRIGL" in message.content)):
+            await message.channel.send("Barra Mrigl!!")
+        
     @commands.Cog.listener()
     async def on_command_error(self,ctx, error):
         if isinstance(error, commands.CommandNotFound):
@@ -103,7 +114,32 @@ class Integrity(commands.Cog):
     # Purge (delete) messages
         await ctx.channel.purge(limit=num_messages + 1)  # +1 to include the command message
         await ctx.send(f"Cleared {num_messages} messages from this channel.")
+    
+    # Most a Active Member
+    @commands.command()
+    async def most_active(self, ctx):
+        # Initialize variables to store the most active member and their message count
+        most_active_member = None
+        max_message_count = 0
+
+        # Iterate through all members in the server
+        for member in ctx.guild.members:
+            # Check if the member is a bot (you can exclude bots if you want)
+            if member.bot:
+                continue
+
+            # Get the message count of the member
+            message_count = sum(1 for message in await ctx.channel.history().filter(lambda m: m.author == member).flatten())
+
+            # Update the most active member if this member has more messages
+            if message_count > max_message_count:
+                max_message_count = message_count
+                most_active_member = member
+
+        if most_active_member:
+            await ctx.send(f"{most_active_member.mention} Howa akther we7ed active fil server!")
+        else:
+            await ctx.send("Mafamma 7atta we7ed active (lotf ya rabi)")  
 
 def setup(bot):
     bot.add_cog(Integrity(bot))
-
