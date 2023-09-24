@@ -2,7 +2,7 @@ import nextcord
 from nextcord.ext import commands
 from nextcord.ext.commands import has_permissions, MissingPermissions
 
-Tn_profanity = ["zab", "nayek", "nik", "zebi", "zabour", "omk", "9a7ba", "3asba", "kaboul", "ta7an", "wabna", "miboun", "tet9ou7eb", "tetzaber", "t7chi", "te7chi", "nike7","malhet"]
+Tn_profanity = ["zab", "nayek", "nik", "zebi", "zabour", "omk", "9a7ba", "3asba", "kaboul", "ta7an", "wabna", "miboun", "tet9ou7eb", "tetzaber", "t7chi", "te7chi", "nike7","malhet","ma5mas","Mba3bes","ya3tek nam"]
 class Integrity(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
