@@ -2,7 +2,9 @@ import nextcord
 from nextcord.ext import commands
 from nextcord.ext.commands import has_permissions, MissingPermissions
 
-Tn_profanity = ["zab", "nayek", "nik", "zebi", "zabour", "omk", "9a7ba", "3asba", "kaboul", "ta7an", "wabna", "miboun", "tet9ou7eb", "tetzaber", "t7chi", "te7chi", "nike7","malhet","ma5mas","Mba3bes","ya3tek nam"]
+with open('Profanity.txt','r') as file:
+    Tn_profanity = [line.strip() for line in file]
+
 class Integrity(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -19,15 +21,17 @@ class Integrity(commands.Cog):
                 await message.delete()
                 await message.channel.send("Ay kelma zeyda tnajem tetbana 3leha!")
                 return  # Stop processing the message further if it contains an offensive word
-        if (("mechi nofter" in message.content) or ("kont nofter" in message.content)):
+        if "bot tell me a joke" in message.content.lower():
+            await message.channel.send("Inti Tounsi HAHAHAHAHAHA!!")
+        if ("mechi nofter" in message.content) or ("kont nofter" in message.content):
             await message.channel.send("sa7a w bechfee")
-        if(("gg" in message.content) or ("GG" in message.content) or ("gj" in message.content)):
+        if("gg" in message.content.lower()) or ("gj" in message.content.lower()):
             await message.channel.send("GG Guys")
-        if (("Hannibal" in message.content) or  ("hannibal" in message.content) or  ("HANNIBAL" in message.content)):
+        if "hannibal" in message.content.lower():
             await message.channel.send("Kenek 7ajtek beya w ma3raftech lcommands type `-help_commands`")
-        if (("shinhi" in message.content) or ("SHINHI" in message.content)):
+        if "shinhi" in message.content.lower():
             await message.channel.send("shinhi li shinhi?")
-        if (("barra mrigl" in message.content) or ("BARRA MRIGL" in message.content)):
+        if "barra mrigl" in message.content.lower():
             await message.channel.send("Barra Mrigl!!")
         
     @commands.Cog.listener()
