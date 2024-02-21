@@ -1,8 +1,10 @@
 import nextcord
 from nextcord.ext import commands
 import os
-from T_api import *
-# Create an instance of the bot with intents
+from dotenv import load_dotenv
+
+load_dotenv()
+
 bot = commands.Bot(command_prefix="-", intents=nextcord.Intents.all())
 @bot.event
 async def on_ready():
@@ -16,5 +18,10 @@ def setup_hook():
             bot.load_extension(f"cogs.{filename[:-3]}")
             print(f"Loaded Cog: {filename[:-3]}")
       
-# Run the bot
-bot.run(TOKEN)
+if __name__ == "__main__":
+    token = os.getenv('TOKEN')
+
+if token:
+    bot.run(token)
+else:
+    print("Bot token not found. Please set the TOKEN environment variable in the .env file.")
