@@ -37,7 +37,7 @@ Hannibal-Bot is a Discord bot developed in Python using the `nextcord` library.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/Hannibal-Bot.git
+git clone https://github.com/AzyzHm/Hannibal-Bot.git
 cd Hannibal-Bot
 ```
 
